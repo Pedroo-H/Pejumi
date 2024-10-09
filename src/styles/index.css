@@ -12,11 +12,12 @@ body {
   max-height: 100%;
   padding: 0;
   overflow: hidden;
+  background-color: #cce7ff;
 }
 
 #cabeçalho{
 
-  background-color: purple;
+  background-color: lightskyblue;
   width: 100%;
   height: 100px;
   margin: 0;
@@ -26,39 +27,88 @@ body {
   align-items: center;
   justify-content: center;
 }
-.container{
+.container-fluid{
+  padding: 0;
   display: flex;
+  margin-left: 0;
 
 }
 
 #pagina{
   display: flex;
-
   justify-content: space-between;
-  gap: 180px;
+  gap: 80px;
   margin: 50px;
   flex:1;
+  overflow-x: auto;
 
 }
 #menuEsq {
+
   color: white;
-  background-color: black;
+
   width: 12%;
   height: 100vh;
   margin: 0;
-  padding: 0;
+  margin-left: -20px;
+  padding-top: 220px;
+  flex-direction: column;
+  display: flex;
+
 }
 
 #imgEnviada, #imgAlterada {
 
-  color: white;
-  background-color: plum;
+  color: black;
+  background-color: white;
+  border: 2px solid grey;
   padding: 10px;
   box-sizing: border-box;
   width: calc(50% - 5px);
   height: 70vh;
   margin: 50px;
 
+}
+#accordionEfeitos {
+  margin-bottom: 2px;
+  width: 100%;
+  padding-bottom: 20px;
+  text-align: center;
+}
+#accordionButtonEfeitos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00b3ff;
+  width: 100%;
+}
 
 
+.accordion-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00b3ff;
+
+
+}
+
+.btn-primary {
+  background-color: green;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+#sobreNos {
+  display: flex;
+  padding: 6px;
+  margin: 0px ;
+  max-width: 100%;
+  height: 52px;
+  background-color: #00b3ff;
+  align-items: center;
+  justify-content: center;
 }

@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editor de imagens</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/index.css" />
   </head>
   <header>
@@ -11,11 +13,36 @@
     </div>
   </header>
 
-  <div class="container">
-
+  <div class="container-fluid">
     <div id = "menuEsq">
-      <p> "oii" </p>
+
+      <div class="accordion" id="accordionEfeitos">
+        <div class="accordion-item">
+          <h2 class="accordion-header" >
+            <button class="accordion-button" id = "accordionButtonEfeitos" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Efeitos
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <button type="button" class="btn btn-primary">Passa Alta I</button>
+                <button type="button" class="btn btn-primary">Passa Alta II</button>
+                <button type="button" class="btn btn-primary">Passa Baixa I</button>
+                <button type="button" class="btn btn-primary">Passa Baixa II</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id = "sobreNos" type="button" class="btn btn-primary">Sobre Nós</button>
     </div>
+
+
+
+
+
 
     <div id = "pagina">
       <div id = "imgEnviada">
@@ -26,8 +53,9 @@
         <p> imagem com filtros aplicados </p>
       </div>
     </div>
-
   </div>
+
+
 
 
 
@@ -36,5 +64,6 @@
 
 
   </body>
-<script src = "../scripts/index.js"></script>
+  <script src = "../scripts/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </html>
