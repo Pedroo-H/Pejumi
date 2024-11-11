@@ -5,6 +5,7 @@ from filters import (
     apply_media_blur,
     apply_canny_edges,
     apply_sobel_filter,
+    apply_global_threshold,
 )
 
 def create_gui():
@@ -44,6 +45,11 @@ def create_gui():
     btn_sobel = tk.Button(button_frame, text="Filtro de Sobel",
                           command=lambda: apply_filter(apply_sobel_filter))
     btn_sobel.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+
+    btn_global_thresholding = tk.Button(button_frame, text="Thresholding Global",
+                          command=lambda: apply_filter(apply_global_threshold))
+    btn_global_thresholding.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+
 
     root.mainloop()
 
