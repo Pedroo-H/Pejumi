@@ -52,7 +52,6 @@ def apply_global_threshold(image):
             break
         
         threshold_value = new_threshold_value
-        print("oi")
     
     for i in range(image.shape[0]):  
         for j in range(image.shape[1]):  
@@ -91,16 +90,13 @@ def apply_otsu_threshold(image):
 
         sum_background += t * hist[t]
         
-        # Calcular as médias dos backgrounds e foregrounds
-        mean_background = sum_background / weight_background
-        mean_foreground = (sum_total - sum_background) / weight_foreground
+        mean_background = sum_background / weight_background                    #media dos backgrounds
+        mean_foreground = (sum_total - sum_background) / weight_foreground      #media dos foregrounds
 
-        # Calcular a variância entre classes
-        variance_between = weight_background * weight_foreground * (mean_background - mean_foreground) ** 2
+        variance_between = weight_background * weight_foreground * (mean_background - mean_foreground) ** 2     #variancia entre classes
 
-        # Atualizar o threshold se a variância for a máxima encontrada
         if variance_between > max_variance:
-            max_variance = variance_between
+            max_variance = variance_between     # Atualizar o threshold se a variância for a máxima encontrada
             threshold_value = t
 
     for i in range(image.shape[0]):  
@@ -112,3 +108,24 @@ def apply_otsu_threshold(image):
 
     return thresholded_image
 
+def apply_erosion(image):
+
+    thresholded_image = apply_global_threshold(image)                   #aplicando thresholding inicialmente                  
+
+    binary_image = (thresholded_image > 0).astype(np.uint8) * 255      #converte imagem para binária (0 ou 255)
+
+    kernel_cruz = np.array([[0, 1, 0],                      #matriz 3x3 de erosao em formato de cruz
+                        [1, 1, 1],
+                        [0, 1, 0]], dtype=np.uint8)
+
+    eroded_image = np.zeros_like(binary_image)              #matriz de saída
+
+    for i in range(1, binary_image.shape[0] - 1):           #o -1 exclui o pixel da borda
+        for j in range(1, binary_image.shape[1] - 1):
+            region = binary_image[i-1:i+2, j-1:j+2]         #pega a regiao da imagem onde o kernel se sobrepoe 
+            if np.all(region[kernel_cruz == 1] == 255):     #kernel_cruz é uma mascara booleana: checa se o pixel de valor 1 no kernel tem valor 255 na regiao selecionada
+                eroded_image[i, j] = 255                            
+            else:
+                eroded_image[i, j] = 0
+    
+    return eroded_image

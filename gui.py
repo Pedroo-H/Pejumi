@@ -7,6 +7,7 @@ from filters import (
     apply_sobel_filter,
     apply_global_threshold,
     apply_otsu_threshold,
+    apply_erosion,
 )
 
 def create_gui():
@@ -55,6 +56,9 @@ def create_gui():
                           command=lambda: apply_filter(apply_otsu_threshold))
     btn_global_thresholding_otsu.pack(side="left", fill="both", expand=True, padx=5, pady=5)
 
+    btn_erosion = tk.Button(button_frame, text="Erosão",
+                          command=lambda: apply_filter(apply_erosion))
+    btn_erosion.pack(side="left", fill="both", expand=True, padx=5, pady=5)
 
     root.mainloop()
 
