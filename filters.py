@@ -150,3 +150,17 @@ def apply_dilation(image):
                 dilated_image[i, j] = 0
     
     return dilated_image
+
+def apply_opening(image):
+
+    eroded_image = apply_erosion(image)             #fazemos o processo de erosão
+    opening_image = apply_dilation(eroded_image)    #fazemos o processo de dilatação
+
+    return opening_image
+
+def apply_closing(image):
+
+    dilated_image = apply_dilation(image)             
+    closing_image = apply_erosion(dilated_image)   
+
+    return closing_image

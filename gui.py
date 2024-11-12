@@ -9,6 +9,8 @@ from filters import (
     apply_otsu_threshold,
     apply_erosion,
     apply_dilation,
+    apply_opening,
+    apply_closing
 )
 
 def create_gui():
@@ -65,6 +67,14 @@ def create_gui():
                           command=lambda: apply_filter(apply_dilation))
     btn_dilation.pack(side="left", fill="both", expand=True, padx=5, pady=5)
 
+    btn_opening = tk.Button(button_frame, text="Abertura",
+                          command=lambda: apply_filter(apply_opening))
+    btn_opening.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+
+    btn_closing = tk.Button(button_frame, text="Fecho",
+                          command=lambda: apply_filter(apply_closing))
+    btn_closing.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+    
     root.mainloop()
 
 
