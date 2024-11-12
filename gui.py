@@ -8,6 +8,7 @@ from filters import (
     apply_global_threshold,
     apply_otsu_threshold,
     apply_erosion,
+    apply_dilation,
 )
 
 def create_gui():
@@ -59,6 +60,10 @@ def create_gui():
     btn_erosion = tk.Button(button_frame, text="Erosão",
                           command=lambda: apply_filter(apply_erosion))
     btn_erosion.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+
+    btn_dilation = tk.Button(button_frame, text="Dilatação",
+                          command=lambda: apply_filter(apply_dilation))
+    btn_dilation.pack(side="left", fill="both", expand=True, padx=5, pady=5)
 
     root.mainloop()
 
