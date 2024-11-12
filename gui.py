@@ -6,6 +6,7 @@ from filters import (
     apply_canny_edges,
     apply_sobel_filter,
     apply_global_threshold,
+    apply_otsu_threshold,
 )
 
 def create_gui():
@@ -49,6 +50,10 @@ def create_gui():
     btn_global_thresholding = tk.Button(button_frame, text="Thresholding Global",
                           command=lambda: apply_filter(apply_global_threshold))
     btn_global_thresholding.pack(side="left", fill="both", expand=True, padx=5, pady=5)
+
+    btn_global_thresholding_otsu = tk.Button(button_frame, text="Thresholding Otsu",
+                          command=lambda: apply_filter(apply_otsu_threshold))
+    btn_global_thresholding_otsu.pack(side="left", fill="both", expand=True, padx=5, pady=5)
 
 
     root.mainloop()
