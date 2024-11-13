@@ -1,4 +1,4 @@
-import customtkinter as ctk 
+import customtkinter as ctk
 from tkinter import filedialog
 from PIL import Image, ImageTk
 import numpy as np
@@ -11,21 +11,21 @@ from segmentation import global_threshold, otsu_threshold
 class Menu(ctk.CTkFrame):
     def __init__(self, master, load_image, apply_filter, morphological_operations, segmentation):
         super().__init__(master)
-        
+
         self.load_image = load_image
         self.apply_filter = apply_filter
         self.segmentation = segmentation
         self.morphological_operations = morphological_operations
-        
+
         self.load_button = ctk.CTkButton(self, text="Load Image", command=self.load_image)
         self.load_button.grid(row=0, column=0, padx=10, pady=5)
-        
+
         self.filter_button = ctk.CTkButton(self, text="Apply filter", command=self.apply_filter)
         self.filter_button.grid(row=0, column=1, padx=10, pady=5)
-        
+
         self.morph_button = ctk.CTkButton(self, text="Morphological Operations", command=self.morphological_operations)
         self.morph_button.grid(row=0, column=2, padx=10, pady=5)
-        
+
         self.segment_button = ctk.CTkButton(self, text="Image Segmentation", command=self.segmentation)
         self.segment_button.grid(row=0, column=3, padx=10, pady=5)
 
@@ -44,10 +44,10 @@ class App(ctk.CTk):
         self.current_bottom_frame = []
 
         self.menu_container = Menu(
-            master=self, 
-            load_image=self.load_image, 
-            apply_filter=self.apply_filter_bottom, 
-            morphological_operations=self.apply_morphological_operations, 
+            master=self,
+            load_image=self.load_image,
+            apply_filter=self.apply_filter_bottom,
+            morphological_operations=self.apply_morphological_operations,
             segmentation=self.apply_segmentation
         )
         self.menu_container.pack(padx=10, pady=10, fill="x", expand=False)
@@ -74,7 +74,7 @@ class App(ctk.CTk):
 
     def apply_filter_bottom(self):
         self._clear_previous_bottom_frame()
-    
+
         self.bottom_container_1 = ctk.CTkFrame(self)
         self.bottom_container_1.pack(side='left', padx=10, pady=10, fill="x", expand=True)
 
@@ -146,7 +146,7 @@ class App(ctk.CTk):
         self.bottom_container.grid_columnconfigure(2, weight=1)
         self.bottom_container.grid_columnconfigure(3, weight=1)
 
-        self.current_bottom_frame = self.bottom_container
+        self.current_bottom_frame = [self.bottom_container]
 
 
     def apply_segmentation(self):
