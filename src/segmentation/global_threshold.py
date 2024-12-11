@@ -1,6 +1,6 @@
 import numpy as np
 
-def apply_global_threshold(image):
+def apply_global_threshold(image, tolerance):   #aqui definimos um valor que será utilizado como criterio de parada na determinação do threshold. sugestao: 0.01, 0.5 e 1.0
 
 
     if len(image.shape) == 3:  
@@ -9,7 +9,8 @@ def apply_global_threshold(image):
         image_array = image
 
     threshold_value = np.mean(image_array)
-    thresholded_image = np.zeros_like(image_array)      
+    thresholded_image = np.zeros_like(image_array)   
+    iteration = 0   
 
     while True:
         G1 = image_array > threshold_value     
@@ -19,12 +20,15 @@ def apply_global_threshold(image):
         m2 = np.mean(image_array[G2]) if np.any(G2) else 0 
   
         new_threshold_value = (m1 + m2) / 2
-        
-        if abs(new_threshold_value - threshold_value) <= 0.1: 
+        print(f"Iteração {iteration}: Limiar = {threshold_value:.4f}, Novo Limiar = {new_threshold_value:.4f}")
+
+
+        if abs(new_threshold_value - threshold_value) <= tolerance: 
 
             break
         
         threshold_value = new_threshold_value
+        iteration += 1
     
     for i in range(image.shape[0]):  
         for j in range(image.shape[1]):  

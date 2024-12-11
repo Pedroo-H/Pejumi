@@ -9,7 +9,7 @@ def gaussian_kernel(size, sigma):
     )
     return kernel / np.sum(kernel)
 
-def apply_gaussian_blur(image, kernel_size=5, sigma=1.0):
+def apply_gaussian_blur(image, kernel_size, sigma=1.0): #passando kernel_size como parâmetro da função [sugestão: 3, 5, 7]
     image_array = np.array(image)
     kernel = gaussian_kernel(kernel_size, sigma)
     height, width = image_array.shape[0], image_array.shape[1]
@@ -24,7 +24,7 @@ def apply_gaussian_blur(image, kernel_size=5, sigma=1.0):
     
     return Image.fromarray(np.uint8(output_image))
 
-def apply_media_blur(image, kernel_size=3):
+def apply_media_blur(image, kernel_size):         #passando kernel_size como parâmetro da função [sugestão: 3, 5, 7]
     image_array = np.array(image)
     height, width = image_array.shape[0], image_array.shape[1]
     pad_width = kernel_size // 2

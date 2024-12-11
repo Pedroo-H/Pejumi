@@ -1,6 +1,6 @@
 import numpy as np
 
-def apply_otsu_threshold(image):
+def apply_otsu_threshold(image, scaling_factor):    #fator escalar como parametro da funcao
 
     if len(image.shape) == 3:  
         image_array = 0.2989 * image[:, :, 0] + 0.5870 * image[:, :, 1] + 0.1140 * image[:, :, 2]
@@ -39,7 +39,8 @@ def apply_otsu_threshold(image):
 
     for i in range(image.shape[0]):  
         for j in range(image.shape[1]):  
-            if image_array[i, j] >= threshold_value:
+            adjusted_threshold = threshold_value * scaling_factor       #fator multplicativo para ajustar sensibilidade [<1.0 = mais sensível;  >1.0 = menos sensível]
+            if image_array[i, j] >= adjusted_threshold:
                 thresholded_image[i, j] = 255           
             else:
                 thresholded_image[i, j] = 0  

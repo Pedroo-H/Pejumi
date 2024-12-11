@@ -63,7 +63,7 @@ class App(ctk.CTk):
 
 
     def load_image(self):
-        file_path = filedialog.askopenfilename(filetypes=[("Images", "*.png;*.jpg;*.jpeg;*.bmp;*.gif")])
+        file_path = filedialog.askopenfilename(filetypes=[("Images", "*.png"), ("Images", "*.jpg"), ("Images", "*.jpeg"), ("Images", "*.bmp"), ("Images", "*.gif")])
         if file_path:
             img = Image.open(file_path)
             self.image = img.convert("RGB")
