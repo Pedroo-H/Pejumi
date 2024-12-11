@@ -311,9 +311,9 @@ class App(ctk.CTk):
                     self.image_states[-1][0], int(kernel_size)
                 )
             case "media":
-                scaling_value = self.slider_low_pass.get()
+                kernel_size = self.slider_low_pass.get()
                 filtered_image = apply_media_blur(
-                    self.image_states[-1][0], int(scaling_value)
+                    self.image_states[-1][0], int(kernel_size)
                 )
             case "closing":
                 kernel_size = self.slider_morph.get()
@@ -324,24 +324,24 @@ class App(ctk.CTk):
                 image_array = np.array(self.image_states[-1][0])
                 filtered_image = dilation.apply_dilation(image_array, int(kernel_size))
             case "erosion":
-                scaling_value = self.slider_morph.get()
+                kernel_size = self.slider_morph.get()
                 image_array = np.array(self.image_states[-1][0])
-                filtered_image = erosion.apply_erosion(image_array, int(scaling_value))
+                filtered_image = erosion.apply_erosion(image_array, int(kernel_size))
             case "opening":
-                scaling_value = self.slider_morph.get()
+                kernel_size = self.slider_morph.get()
                 image_array = np.array(self.image_states[-1][0])
-                filtered_image = opening.apply_dilation(image_array, int(scaling_value))
+                filtered_image = opening.apply_dilation(image_array, int(kernel_size))
             case "global":
-                scaling_value = self.slider_segmentation.get()
-                if scaling_value == 3.0:
-                    scaling_value = 0.01
-                if scaling_value == 5.0:
-                    scaling_value == 0.5
-                if scaling_value == 7.0:
-                    scaling_value = 1.0
+                stopping_criterion = self.slider_segmentation.get()
+                if stopping_criterion == 3.0:
+                    stopping_criterion = 0.01
+                if stopping_criterion == 5.0:
+                    stopping_criterion == 0.5
+                if stopping_criterion == 7.0:
+                    stopping_criterion = 1.0
                 image_array = np.array(self.image_states[-1][0])
                 filtered_image = global_threshold.apply_global_threshold(
-                    image_array, scaling_value
+                    image_array, stopping_criterion
                 )
             case "otsu":
                 scaling_value = self.slider_segmentation.get()
