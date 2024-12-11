@@ -20,8 +20,6 @@ def apply_global_threshold(image, tolerance):   #aqui definimos um valor que ser
         m2 = np.mean(image_array[G2]) if np.any(G2) else 0 
   
         new_threshold_value = (m1 + m2) / 2
-        print(f"Iteração {iteration}: Limiar = {threshold_value:.4f}, Novo Limiar = {new_threshold_value:.4f}")
-
 
         if abs(new_threshold_value - threshold_value) <= tolerance: 
 
